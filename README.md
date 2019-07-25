@@ -13,56 +13,56 @@ Closed Formulae:
 &#160;&#160;&#160;&#160;7. Discussion on closed-form formulae of exotics mentioned above  
 
 
-##**1. mc_double_barrier.m：**
+## **1. mc_double_barrier.m：**
 
-此函数是对于多次观察的双鲨期权（欧式带rebate）的蒙特卡洛模拟定价；
+This function is a Monte-Carlo simulation pricing on multiple times monitoring Double Shark Option (european with rebate):  
     
-双鲨期权即收益结构为下图的期权：
+Double Shark Option (DSO) is an option structured like this:  
 					                
-						  \				/
-						   \           /
-	    Rebate1 ----------  \____0____/  ---------- Rebate2
-				         H1  K1      K2  H2
+			      \	            /  
+			       \           /  
+	    Rebate1 ----------  \____0____/  ---------- Rebate2  
+			     H1  K1      K2  H2  
 	
-观察次数为m，每当观察时标的物现价St小于等于H1或大于等于H2时，该期权敲出；
-如果直至maturity date该期权都未敲出，则按图中收益曲线偿付。
-如想定价只带一个行权价K1或K2的双障碍期权，即收益结构形如：
+monitored m times; when it is observed that <img src="https://latex.codecogs.com/gif.latex?S_t&space;\leq&space;H_1\&space;or\&space;S_t&space;\geq&space;H_2" title="S_t \leq H_1\ or\ S_t \geq H_2" />, the option gets knocked out;  
+If the option did not get knocked untill maturirty date, the payment will ba made according to the structure graph.  
+To price a standard double barrier option with single strike price, which is structured like:  
 					                
-						  \			
-						   \          
-	    Rebate1 ----------  \____0____---------- Rebate2
-				         H1  K1       H2
+			      \			
+			       \          
+	    Rebate1 ----------  \____0____---------- Rebate2  
+			     H1  K1       H2  
 						 
-或
+or  
 						                
-						   				/
-						               /
-	    Rebate1 ------------ ____0____/  ---------- Rebate2
-				         H1        K2  H2
+					    /  
+					   /  
+	    Rebate1 ------------ ____0____/  ---------- Rebate2  
+			       H1        K2  H2  
 						
-的标准双障碍期权，则将K2设置为大于H2使其失效；或将K1设置为小于H1使其失效即可。
+Set <img src="https://latex.codecogs.com/gif.latex?K_2&space;\geq&space;H_2\&space;or\&space;K_1&space;\leq&space;H_1" title="K_2 \geq H_2\ or\ K_1 \leq H_1" /> to nullify them.  
 
-Rebate偿付时间可选敲出时立即偿付与延时偿付（即在原先约定的maturity时偿付）。
+Rebate payment time can be opted as "immediate" or "deferred" (immediate means pay as knocked; deferred means pay at maturity day).  
     
-##**2. mc_barrier_rebate.m**
+## **2. mc_barrier_rebate.m**
 
-此函数是对于多次观察的带rebate的标准障碍期权（欧式）的蒙特卡洛模拟定价；
+This function is a Monte-Carlo simulation pricing on multiple times monitoring Standard Barrier Option (european with rebate):  
     
-即当为"call-out-up"（向上敲出的看涨期权）时收益结构如下图的：
+Standard Barrier Option (SBO) is an option structured like this:  
     
-						   				/
-						               /
-	           0 _____________________/  ---------- Rebate
-				                     K   H
+					    /  
+				           /  
+	           0 _____________________/  ---------- Rebate  
+				         K   H  
     
-观察次数为m，每当观察时标的物现价St小于等于H1或大于等于H2时，该期权敲出；
-如果直至maturity date该期权都未敲出，则按图中收益曲线偿付。
-对于观察次数m，如想对于一个maturity为 61/244 的期权daily观察，则使 m = 61，其余以此类推；
-如想定价一个只在到期时观察一次的期权，则使 m = 1。
+monitored m times; when it is observed that <img src="https://latex.codecogs.com/gif.latex?S_t&space;\leq&space;H_1\&space;or\&space;S_t&space;\geq&space;H_2" title="S_t \leq H_1\ or\ S_t \geq H_2" />, the option gets knocked out;  
+If the option did not get knocked untill maturirty date, the payment will ba made according to the structure graph;  
+For monitoring times m, for example, to daily observe an option with time to maturity = 61/244 (years), set m = 61;  
+To only observe on maturity day, set m = 1.  
 
-Rebate偿付时间可选敲出时立即偿付与延时偿付（即在原先约定的maturity时偿付）。
-    
-##**3. mc_american_con.m**
+Rebate payment time can be opted as "immediate" or "deferred" (immediate means pay as knocked; deferred means pay at maturity day).  
+
+## **3. mc_american_con.m**
     
 此函数是对于多次观察的现金偿付美式二元期权（ameriacan cash-or-nothing）的蒙特卡洛模拟定价；
 包含有'call'与'put'两种偿付形式。
@@ -70,7 +70,7 @@ Rebate偿付时间可选敲出时立即偿付与延时偿付（即在原先约�
 'call'指代有以下收益结构的期权：
     
 	           0 _____________________---------- Cash_Payment
-				                      K
+			                  K
     
 'put'则指代有以下收益结构的期权：
     
@@ -79,24 +79,24 @@ Rebate偿付时间可选敲出时立即偿付与延时偿付（即在原先约�
     
 Cash偿付时间可选敲出时立即偿付与延时偿付（即在原先约定的maturity时偿付）。
     
-##**4. CRR_Vanilla_Euro&Ameri.py**
+## **4. CRR_Vanilla_Euro&Ameri.py**
 
 此函数是对于香草的欧式与美式期权使用Cox-Ross-Rubinstein理论的二叉树模拟定价；
 使用math与numpy包裹。
 
-##**5. CRR_Vanilla_Delta.py**
+## **5. CRR_Vanilla_Delta.py**
 
 此函数是使用上面CRR_Vanilla_Euro&Ameri.py中函数定价欧式与美式香草后；
 使用有限差分计算delta值的函数；
 使用math与numpy包裹；可以脱离CRR_Vanilla_Euro&Ameri.py独立运行。
 
-##**6. CRR_Maturity_Barrier&Delta.py**
+## **6. CRR_Maturity_Barrier&Delta.py**
 
 此函数是对于到期观察一次的欧式障碍期权使用Cox-Ross-Rubinstein理论的二叉树模拟定价并有限差分计算其delta；
 到期观察一次，指对于2中同样的收益结构的，观察在且仅在maturity时进行一次，敲出则偿付Rebate，未敲出则欧式结算。
 使用math与numpy包裹。
     
-##**7. Discussion on closed-form formulae of exotics mentioned above**
+## **7. Discussion on closed-form formulae of exotics mentioned above**
 
 ###**&#160;&#160;&#160;&#160;7.1 double barrier:** 
 &#160;&#160;&#160;&#160;可以由两个单行权价的标准双障碍期权与两个行权价分别等于两边障碍的看涨与看跌美式二元期权（cash or nothing）组合成；

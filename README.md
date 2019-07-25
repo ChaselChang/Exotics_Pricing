@@ -12,6 +12,9 @@ Python:
 Closed Formulae:  
 &#160;&#160;&#160;&#160;7. Discussion on closed-form formulae of exotics mentioned above  
 
+Here is some independent work on option prcing and greeks for dynamic hedge.  
+These functions are **numerical pricing methods** employed to review and validate the closed-form formulae and models used in dynamic hedging system.  
+More discussion on closed-form pricing formulae is being organized and will be updated.
 
 ## **1. mc_double_barrier.m：**
 
@@ -64,55 +67,53 @@ Rebate payment time can be opted as "immediate" or "deferred" (immediate means p
 
 ## **3. mc_american_con.m**
     
-此函数是对于多次观察的现金偿付美式二元期权（ameriacan cash-or-nothing）的蒙特卡洛模拟定价；
-包含有'call'与'put'两种偿付形式。
+This function is a Monte-Carlo simulation pricing on multiple times monitoring American cash-or-nothing Binary Option ("call" or "put"):  
     
-'call'指代有以下收益结构的期权：
+"call" refers to options structured like this:  
     
-	           0 _____________________---------- Cash_Payment
-			                  K
+	           0 _____________________---------- Cash_Payment  
+			                  K  
     
-'put'则指代有以下收益结构的期权：
+"put" refers to options structured like this:  
     
-              Cash_Payment -----------___________________ 0
-                                      K
+              Cash_Payment -----------___________________ 0  
+                                      K  
     
-Cash偿付时间可选敲出时立即偿付与延时偿付（即在原先约定的maturity时偿付）。
+Rebate payment time can be opted as "immediate" or "deferred" (immediate means pay as knocked; deferred means pay at maturity day).  
     
 ## **4. CRR_Vanilla_Euro&Ameri.py**
 
-此函数是对于香草的欧式与美式期权使用Cox-Ross-Rubinstein理论的二叉树模拟定价；
-使用math与numpy包裹。
+This function is a Cox-Ross-Rubinstein Binomial Tree Simulation on American Vanilla Option using math and numpy package.  
 
 ## **5. CRR_Vanilla_Delta.py**
 
-此函数是使用上面CRR_Vanilla_Euro&Ameri.py中函数定价欧式与美式香草后；
-使用有限差分计算delta值的函数；
-使用math与numpy包裹；可以脱离CRR_Vanilla_Euro&Ameri.py独立运行。
+This function calculates Greeks of American vanilla by Finite Difference after Cox-Ross-Rubinstein Binomial Tree Simulation pricing;  
+It uses math and numpy packages and works independently to 4. CRR_Vanilla_Euro&Ameri.py.  
 
 ## **6. CRR_Maturity_Barrier&Delta.py**
 
-此函数是对于到期观察一次的欧式障碍期权使用Cox-Ross-Rubinstein理论的二叉树模拟定价并有限差分计算其delta；
-到期观察一次，指对于2中同样的收益结构的，观察在且仅在maturity时进行一次，敲出则偿付Rebate，未敲出则欧式结算。
-使用math与numpy包裹。
+This function calculates prices Maturity-Monitor Barrier Option (European) with Cox-Ross-Rubinstein Binomial Tree Simulation;  
+And it calculates its Greeks by Finite Difference.  
+A Maturity-Monitor Barrier Option refers to a Barrier Option structured like section 2 while it is observed only once at its maturity day;  
+If it does not get knocked out, it will be payed as European Vanilla option.  
+It uses math and numpy packages.  
     
 ## **7. Discussion on closed-form formulae of exotics mentioned above**
 
-###**&#160;&#160;&#160;&#160;7.1 double barrier:** 
-&#160;&#160;&#160;&#160;可以由两个单行权价的标准双障碍期权与两个行权价分别等于两边障碍的看涨与看跌美式二元期权（cash or nothing）组合成；
-&#160;&#160;&#160;&#160;单行权价的标准双障碍期权价格参见Ed. Haug, 'The Complete Guide to Option Pricing Formulas (2006 2nd edition)', 4.17.3；
-&#160;&#160;&#160;&#160;美式二元期权（cash or nothing）参见下文。
+### &#160;&#160;&#160;&#160; **7.1 double barrier:**  
+&#160;&#160;&#160;&#160; It could be structured by two Standard Double Barrier Options with single strike price (put and call) together with two (Double Barrier) American cash-or-nothing Binary Options with strike prices equal to barriers of original option.  
+&#160;&#160;&#160;&#160; For single strike price Standard Double Barrier Option pricing see Ed. Haug, 'The Complete Guide to Option Pricing Formulas (2006 2nd edition)', 4.17.3；  
+&#160;&#160;&#160;&#160; American cash-or-nothing Binary Option see 7.3.  
         
-&#160;&#160;&#160;&#160;注：实际使用这个结构定价双鲨期权时，daily观察的情况下会与1中蒙特卡洛方法定价的结果有一定出入（差异2%~0.5%）；
-&#160;&#160;&#160;&#160;具体原因仍在探究。
+	
+### &#160;&#160;&#160;&#160; **7.2 standard barrier with rebate:**
+&#160;&#160;&#160;&#160; Knocking out rebate payment can be made immediately or deferred (at maturity day).  
+&#160;&#160;&#160;&#160; For immediate payment, see Ed. Haug, 'The Complete Guide to Option Pricing Formulas (2006 2nd edition)', 4.17.1；  
+&#160;&#160;&#160;&#160; For deferred payment, it can be seen as a deferred-payment American cash-or-nothing Binary Option. See 7.3.
         
-###**&#160;&#160;&#160;&#160;7.2 standard barrier with rebate:**
-&#160;&#160;&#160;&#160;分敲出时立即偿付与敲出后延期到maturity再偿付两种情况；
-&#160;&#160;&#160;&#160;立即偿付的情况参见Ed. Haug, 'The Complete Guide to Option Pricing Formulas (2006 2nd edition)', 4.17.1；
-&#160;&#160;&#160;&#160;延期偿付的情况等同于一个延期偿付的美式二元期权，参见下文。
-        
-###**&#160;&#160;&#160;&#160;7.3 american cash or nothing:**
-&#160;&#160;&#160;&#160;分达到行权价时立即偿付与达到行权价后延期到maturity再偿付两种情况；
+### &#160;&#160;&#160;&#160; **7.3 american cash or nothing:**
+&#160;&#160;&#160;&#160; 
+分达到行权价时立即偿付与达到行权价后延期到maturity再偿付两种情况；
 ####**&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;7.3.1 到行权价时立即偿付：**
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;参见Ed. Haug, 'The Complete Guide to Option Pricing Formulas (2006 2nd edition)', 4.17.1, P.152 上 F 式。
 ####**&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;7.3.2 达到行权价后延期到maturity再偿付：**

@@ -1,20 +1,17 @@
-# Exotics_Pricing
+# Exotics_Pricing  
 
 
----
+Matlab:  
+&#160;&#160;&#160;&#160;1. mc_double_barrier.m  
+&#160;&#160;&#160;&#160;2. mc_barrier_rebate.m  
+&#160;&#160;&#160;&#160;3. mc_american_con.m  
+Python:  
+&#160;&#160;&#160;&#160;4. CRR_Vanilla_Euro&Ameri.py  
+&#160;&#160;&#160;&#160;5. CRR_Vanilla_Delta.py  
+&#160;&#160;&#160;&#160;6. CRR_Maturity_Barrier&Delta.py  
+Closed Formulae:  
+&#160;&#160;&#160;&#160;7. Discussion on closed-form formulae of exotics mentioned above  
 
-Matlab: 
-&#160;&#160;&#160;&#160;1. mc_double_barrier.m
-&#160;&#160;&#160;&#160;2. mc_barrier_rebate.m
-&#160;&#160;&#160;&#160;3. mc_american_con.m
-Python: 
-&#160;&#160;&#160;&#160;4. CRR_Vanilla_Euro&Ameri.py
-&#160;&#160;&#160;&#160;5. CRR_Vanilla_Delta.py
-&#160;&#160;&#160;&#160;6. CRR_Maturity_Barrier&Delta.py
-Closed Formulae:
-&#160;&#160;&#160;&#160;7. Discussion on closed-form formulae of exotics mentioned above
-
-	
 
 ##**1. mc_double_barrier.m：**
 

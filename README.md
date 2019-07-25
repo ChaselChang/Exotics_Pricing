@@ -12,7 +12,7 @@ Python:
 Closed Formulae:  
 &#160;&#160;&#160;&#160;7. Discussion on closed-form formulae of exotics mentioned above  
 
-Here is some independent work on option prcing and greeks for dynamic hedge.  
+Here is some independent work of mine on option prcing and greeks calculation for dynamic hedge.  
 These functions are **numerical pricing methods** employed to review and validate the closed-form formulae and models used in dynamic hedging system.  
 More discussion on closed-form pricing formulae is being organized and will be updated.
 

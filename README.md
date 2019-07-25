@@ -112,14 +112,12 @@ It uses math and numpy packages.
 &#160;&#160;&#160;&#160; For deferred payment, it can be seen as a deferred-payment American cash-or-nothing Binary Option. See 7.3.
         
 ### &#160;&#160;&#160;&#160; **7.3 american cash or nothing:**
-&#160;&#160;&#160;&#160; 
-分达到行权价时立即偿付与达到行权价后延期到maturity再偿付两种情况；
-####**&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;7.3.1 到行权价时立即偿付：**
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;参见Ed. Haug, 'The Complete Guide to Option Pricing Formulas (2006 2nd edition)', 4.17.1, P.152 上 F 式。
-####**&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;7.3.2 达到行权价后延期到maturity再偿付：**
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;参见7.3.2.Implicit_formula_of_rebate_pricing.pdf文件；
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;（通过使用 Girsanov Theorem 转换测度来求解标的物价格越过障碍水平的累积分布函数）
-
+&#160;&#160;&#160;&#160; The cash payment can be made immediatly at trigerring or deferred to maturity day.  
+#### &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; **7.3.1 Immediate Payment**
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; See Ed. Haug, 'The Complete Guide to Option Pricing Formulas (2006 2nd edition)', 4.17.1, P.152, Formula F.
+#### &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; **7.3.2 Deferred Payment**
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; See 7.3.2.Implicit_Formulae_for_Rebate_and_American_Cash_or_Nothing_Pricing.pdf；  
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; This report calculates the pdf and then cdf of stock price goes over barrier level in a particular time period by using Girsanov Theorem to transfer probability measures.
 
 
 

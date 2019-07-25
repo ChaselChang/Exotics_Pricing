@@ -6,9 +6,9 @@ Matlab:
 &#160;&#160;&#160;&#160;2. mc_barrier_rebate.m  
 &#160;&#160;&#160;&#160;3. mc_american_con.m  
 Python:  
-&#160;&#160;&#160;&#160;4. CRR_Vanilla_Euro&Ameri.py  
+&#160;&#160;&#160;&#160;4. CRR_Vanilla_Euro_Ameri.py  
 &#160;&#160;&#160;&#160;5. CRR_Vanilla_Delta.py  
-&#160;&#160;&#160;&#160;6. CRR_Maturity_Barrier&Delta.py  
+&#160;&#160;&#160;&#160;6. CRR_Maturity_Barrier_Delta.py  
 Closed Formulae:  
 &#160;&#160;&#160;&#160;7. Discussion on closed-form formulae of exotics mentioned above  
 
@@ -81,7 +81,7 @@ This function is a Monte-Carlo simulation pricing on multiple times monitoring A
     
 Rebate payment time can be opted as "immediate" or "deferred" (immediate means pay as knocked; deferred means pay at maturity day).  
     
-## **4. CRR_Vanilla_Euro&Ameri.py**
+## **4. CRR_Vanilla_Euro_Ameri.py**
 
 This function is a Cox-Ross-Rubinstein Binomial Tree Simulation on American Vanilla Option using math and numpy package.  
 
@@ -90,7 +90,7 @@ This function is a Cox-Ross-Rubinstein Binomial Tree Simulation on American Vani
 This function calculates Greeks of American vanilla by Finite Difference after Cox-Ross-Rubinstein Binomial Tree Simulation pricing;  
 It uses math and numpy packages and works independently to 4. CRR_Vanilla_Euro&Ameri.py.  
 
-## **6. CRR_Maturity_Barrier&Delta.py**
+## **6. CRR_Maturity_Barrier_Delta.py**
 
 This function calculates prices Maturity-Monitor Barrier Option (European) with Cox-Ross-Rubinstein Binomial Tree Simulation;  
 And it calculates its Greeks by Finite Difference.  

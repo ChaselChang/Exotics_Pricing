@@ -103,21 +103,50 @@ It uses math and numpy packages.
 ### &#160;&#160;&#160;&#160; **7.1 double barrier:**  
 &#160;&#160;&#160;&#160; It could be structured by two Standard Double Barrier Options with single strike price (put and call) together with two (Double Barrier) American cash-or-nothing Binary Options with strike prices equal to barriers of original option.  
 &#160;&#160;&#160;&#160; For single strike price Standard Double Barrier Option pricing see Ed. Haug, 'The Complete Guide to Option Pricing Formulas (2006 2nd edition)', 4.17.3；  
-&#160;&#160;&#160;&#160; American cash-or-nothing Binary Option see 7.3.  
+&#160;&#160;&#160;&#160; American cash-or-nothing Binary Option see 7.5.  
         
 	
 ### &#160;&#160;&#160;&#160; **7.2 standard barrier with rebate:**
 &#160;&#160;&#160;&#160; Knocking out rebate payment can be made immediately or deferred (at maturity day).  
 &#160;&#160;&#160;&#160; For immediate payment, see Ed. Haug, 'The Complete Guide to Option Pricing Formulas (2006 2nd edition)', 4.17.1；  
-&#160;&#160;&#160;&#160; For deferred payment, it can be seen as a deferred-payment American cash-or-nothing Binary Option. See 7.3.
+&#160;&#160;&#160;&#160; For deferred payment, it can be seen as a deferred-payment American cash-or-nothing Binary Option. See 7.5.
         
-### &#160;&#160;&#160;&#160; **7.3 american cash or nothing:**
+### &#160;&#160;&#160;&#160; **7.3 maturity-monitor barrier option with rebate:**
+&#160;&#160;&#160;&#160; A maturity-monitor barrier option can be structured by European Vanilla, European cash-or-nothing Binary and European asset-or-nothing options.  
+
+matu-barrier type | * | * | * | * | *   
+---- | ---- | ---- | ---- | ---- | ----   
+Up-Out-Call(H>K)= | Call @K | - AoN Call @H | + CoN Call @H (K+R)
+Up-Out-Call(H<K)= | CoN Call @H (R)
+Up-Out-Put(H>K)= | Put @K | + CoN Call @H (R)
+Up-Out-Put(H<K)= | Put @K | + AoN Call @H | - AoN Call @K | - CoN Call @H (K) | + CoN Call @K (K) | + CoN Call @H (R)
+Up-In-Call(H>K)= | Call @K | - AoN Call @K | + AoN Call @H | + CoN Call @K (K) | - CoN Call @H (K) | + CoN Put @H (R)
+Up-In-Call(H<K)= | Call @K | + CoN Put @H (R)
+Up-In-Put(H>K) = | CoN Put @H (R)
+Up-In-Put(H<K) = | Put @K | + AoN Put @H | - CoN Put @H (K) | + CoN Put @H (R)
+Down-Out-Call(H>K) = | Up-In-Call(H>K)
+Down-Out-Call(H<K) = | Up-In-Call(H<K)
+Down-Out-Put(H>K) = | Up-In-Put(H>K)
+Down-Out-Put(H<K) = | Up-In-Put(H<K)
+Down-In-Call(H>K) = | Up-Out-Call(H>K)
+Down-In-Call(H<K) = | Up-Out-Call(H<K)
+Down-In-Put(H>K) = | UP-Out-Put(H>K)
+Down-In-Put(H<K) = | Up-Out-Put(H<K)
+
+&#160;&#160;&#160;&#160; Interpretation on notations: Call @K denotes European Call Vanilla with strike price at K; AoN Call @H denotes European Call asset-or-nothing Binary with strike price at H; CoN Call @H (K) denotes European Call cash-or-nothing Binary with strike price at H and cash payment of K.  
+
+### &#160;&#160;&#160;&#160; **7.4 double-shark barrier option with rebate:**
+&#160;&#160;&#160;&#160; A DSO can be priced by taking it apart into two standard double barrier options (call and put) with single strike price together with an exotic American cash-or-nothing Binary with two strike prices and rebates;  
+&#160;&#160;&#160;&#160; For Standard double barrier option see Ed. Haug, 'The Complete Guide to Option Pricing Formulas (2006 2nd edition)', 4.17.3.  
+&#160;&#160;&#160;&#160; For American cash-or-nothing Binary see 7.5.
+
+### &#160;&#160;&#160;&#160; **7.5 american cash or nothing:**
 &#160;&#160;&#160;&#160; The cash payment can be made immediatly at trigerring or deferred to maturity day.  
-#### &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; **7.3.1 Immediate Payment**
+#### &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; **7.5.1 Immediate Payment**
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; See Ed. Haug, 'The Complete Guide to Option Pricing Formulas (2006 2nd edition)', 4.17.1, P.152, Formula F.
-#### &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; **7.3.2 Deferred Payment**
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; See 7.3.2.Implicit_Formulae_for_Rebate_and_American_Cash_or_Nothing_Pricing.pdf；  
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; This report calculates the pdf and then cdf of stock price goes over barrier level in a particular time period by using Girsanov Theorem to transfer probability measures.
-
-
+#### &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; **7.5.2 Deferred Payment**
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; See 7.5.2.Implicit_Formulae_for_Rebate_and_American_Cash_or_Nothing_Pricing.pdf；  
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; In this report I calculated the pdf and then cdf of stock price goes over barrier level in a particular time period by using Girsanov Theorem to transfer probability measures.
+#### &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; **7.5.3 American cash-or-nothing Binary with two strike prices and rebates**
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Will be updated
 

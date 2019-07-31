@@ -142,8 +142,9 @@ Down-In-Put(H<K) = | Up-Out-Put(H<K)
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; See 7.4.2.Implicit_Formulae_for_Rebate_and_American_Cash_or_Nothing_Pricing.pdf；  
 &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; In this report I calculated the pdf and then cdf of stock price goes over barrier level in a particular time period by using Girsanov Theorem to transfer probability measures.
 #### &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; **7.4.3 American cash-or-nothing Binary with two strike prices and rebates**
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Will be updated  
-&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; This is primarily for pricing double-shark-options. It should look like this:  
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; See 7.4.3.Implicit_Formulae_for_Rebate_Part_of_Double_Barrier_Option.pdf;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; In this report I priced an exotic American cash-or-nothing Binary looks like this:  
 
 	Cash_Payment 1 ------------_________---------- Cash_Payment 2  
 			          K1        K2 
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; By solving the Kolmogorov Equations of the process density function through Laplace transformation. Both immediate-payment and deferred-payment formulae are provided.

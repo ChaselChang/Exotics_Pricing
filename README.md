@@ -2,7 +2,7 @@
 
 + This repository is created and updated by [Tianshu Zhang](https://www.linkedin.com/in/tianshu-zhang-chasel/).
 
-+ Please feel free to contact me via LinkedIn or by email: tz2437@columbia.edu(tz2437@columbia.edu).
++ Please feel free to contact me via LinkedIn or by email: tz2437@columbia.edu.
 
 Matlab:  
 &#160;&#160;&#160;&#160;1. mc_double_barrier.m  
